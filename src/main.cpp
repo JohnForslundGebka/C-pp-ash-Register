@@ -1,12 +1,12 @@
 #include "article.h"
 #include "menu.h"
+#include <SQLiteCpp/SQLiteCpp.h>
 #include <iostream>
 
 
 
 int main()
 {
-
    Menu mainMenu;
    Menu manageProducts;
    Menu sale;
@@ -15,6 +15,9 @@ int main()
    mainMenu.addSubMenu("Manage Products", &manageProducts);
    mainMenu.addSubMenu("Make A Sale", &sale);
    mainMenu.addSubMenu("Transaction History",&transactions);
+
+
+
 
    mainMenu.run();
 
