@@ -3,11 +3,15 @@
 //prints all the choices from the menu
 void Menu::displayMenuItems() const
 {
-    int i = 0; // Start from 0
+    int i{}; // Start from 0
+    std::cout << "\n====================================\n";
+    std::cout << "   Cash Register Management System   \n";
+
     for (const auto& temp : items)
     {
-        std::cout << ++i << ". " << temp.name << std::endl;
+        std::cout << "[" << ++i << "] " << temp.name << "\n";
     }
+    std::cout << "====================================\n";
 }
 
 //main loop of the menu class
@@ -21,7 +25,8 @@ void Menu::run()
         int choice;
         std::cin >> choice;
 
-        if (choice == 0) {
+        if (choice == 0)
+        {
             break; // Exit the menu
         }
 

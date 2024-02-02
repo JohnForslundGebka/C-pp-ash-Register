@@ -34,5 +34,4 @@ public:
 
 };
 
-
 #endif //C_PP_ASH_REGISTER_MENU_H
