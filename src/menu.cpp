@@ -1,5 +1,16 @@
 #include "menu.h"
 
+void clearScreen()
+{
+#if defined(_WIN32) || defined(_WIN64)
+    std::system("cls");
+#else
+    std::system("clear");
+#endif
+}
+
+
+
 //prints all the choices from the menu
 void Menu::displayMenuItems() const
 {
@@ -20,9 +31,9 @@ void Menu::run()
 {
     while (true)
     {
+        clearScreen();
         displayMenuItems();
         std::cout << "\nChoose an option (0 to exit): ";
-
 
         int choice{};
         std::cin >> choice;

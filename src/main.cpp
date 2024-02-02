@@ -2,14 +2,6 @@
 #include "menu.h"
 #include <iostream>
 
-void clearScreen()
-{
-#if defined(_WIN32) || defined(_WIN64)
-    std::system("cls");
-#else
-    std::system("clear");
-#endif
-}
 
 
 int main()
