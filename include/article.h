@@ -15,9 +15,11 @@ public:
     Article(std::string title, int artNumber, double purchasePrice,  double retailPrice, int amount);
 
     //get functions
-    std::string getTitle() { return m_title; }
-    int getArtNumber() { return m_artNumber; }
-
+    std::string getTitle() const { return m_title; }
+    int getArtNumber() const { return m_artNumber; }
+    double getPurchasePrice() const { return m_purchasePrice; }
+    double getRetailPrice() const { return m_retailPrice; }
+    int getAmount() const { return m_amount; }
 
 };
 
