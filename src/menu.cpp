@@ -6,6 +6,7 @@ void Menu::displayMenuItems() const
     int i{}; // Start from 0
     std::cout << "\n====================================\n";
     std::cout << "   Cash Register Management System   \n";
+    std::cout << "====================================\n\n";
 
     for (const auto& temp : items)
     {
@@ -19,10 +20,11 @@ void Menu::run()
 {
     while (true)
     {
-        std::cout << "\nChoose an option (0 to exit):" << std::endl;
         displayMenuItems();
+        std::cout << "\nChoose an option (0 to exit): ";
 
-        int choice;
+
+        int choice{};
         std::cin >> choice;
 
         if (choice == 0)
