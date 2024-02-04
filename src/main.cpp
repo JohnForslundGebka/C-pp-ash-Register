@@ -1,6 +1,7 @@
+#include "databaseQueries.h"
 #include "article.h"
 #include "menu.h"
-#include <SQLiteCpp/SQLiteCpp.h>
+
 #include <iostream>
 
 
