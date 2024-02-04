@@ -13,10 +13,10 @@ private:
     std::unique_ptr<SQLite::Database> db;
 public:
     DatabaseQueries();
-    virtual ~DatabaseQueries(); // Destructor
+
 
     std::unique_ptr<SQLite::Statement> getDataFromDb(int articleNumber,const std::string &table);
-    void updateInfoFromDb();
+    void updateAmountInDb(int articleNumber,const std::string &table);
 
 
 
