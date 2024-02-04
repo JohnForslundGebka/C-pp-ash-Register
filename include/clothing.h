@@ -1,0 +1,10 @@
+#ifndef C_PP_ASH_REGISTER_CLOTHING_H
+#define C_PP_ASH_REGISTER_CLOTHING_H
+
+
+class clothing {
+
+};
+
+
+#endif //C_PP_ASH_REGISTER_CLOTHING_H

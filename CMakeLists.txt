@@ -8,6 +8,8 @@ add_executable(C-pp-ash-Register src/main.cpp
         src/article.cpp
         src/menu.cpp
         src/databaseQueries.cpp
+        src/clothing.cpp
+        include/clothing.h
 )
 
 target_include_directories(C-pp-ash-Register PUBLIC "${PROJECT_BINARY_DIR}" "include")
