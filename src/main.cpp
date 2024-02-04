@@ -1,7 +1,8 @@
 #include "databaseQueries.h"
 #include "article.h"
 #include "menu.h"
-
+#include "databaseQueries.h"
+#include "clothing.h"
 #include <iostream>
 
 
