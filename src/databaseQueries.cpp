@@ -6,7 +6,7 @@
 DatabaseQueries::DatabaseQueries()
 : db(std::make_unique<SQLite::Database>("/db/CashRegisterDB.db", SQLite::OPEN_READWRITE|SQLite::OPEN_CREATE)) {}
 
-//returns a pointer to that specefic query. which can then be used to fill article objects with data
+//returns a pointer to that specific query. which can then be used to fill article objects with data
 std::unique_ptr<SQLite::Statement> DatabaseQueries::getDataFromDb(int articleNumber, const std::string &table) {
     try {
 

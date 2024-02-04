@@ -10,9 +10,10 @@ private:
     const double m_purchasePrice{};
     const double m_retailPrice{};
     int m_amount{};
+    const std::string m_table{};
 
 public:
-    Article(std::string title, int artNumber, double purchasePrice,  double retailPrice, int amount);
+    Article(std::string title, int artNumber, double purchasePrice,  double retailPrice, int amount, std::string table);
 
     //get functions
     std::string getTitle() const { return m_title; }
