@@ -19,7 +19,7 @@ public:
     std::string getAuthor() const { return m_author; }
     long getIsbn() const { return m_isbn; }
 
-    void printInfo();
+    void printInfo() const override;
 
 };
 

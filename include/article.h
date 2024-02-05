@@ -31,6 +31,8 @@ public:
     void setRetailPrice(double retailPrice) { m_retailPrice = retailPrice; }
     void setAmount(int amount) { m_amount = amount; }
 
+    virtual void printInfo() const = 0; // Pure virtual function
+
 };
 
 #endif

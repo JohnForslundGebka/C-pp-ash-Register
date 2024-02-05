@@ -5,10 +5,12 @@
 #include "clothing.h"
 #include "books.h"
 #include <iostream>
+#include <memory>
 #include <any>
 
 void printArticleInfo(std::any &param)
 {
+    std::unique_ptr<Article> article;
     while (true)
     {
         int userInputArticleNum{};
@@ -21,16 +23,21 @@ void printArticleInfo(std::any &param)
         std::cin >> userInputArticleNum;
         typeOfArticle = (userInputArticleNum / 1000);
 
-
-        Clothing article(userInputArticleNum);
-
-
-
-
-
+        switch (typeOfArticle)
+        {
+            case 1:
+                article = std::make_unique<Books>(userInputArticleNum);
+                break;
+            case 2:
+                article = std::make_unique<Clothing>(userInputArticleNum);
+                break;
+            default:
+                std::cout << "ERROR MED SWITCH";
+                break;
+        }
 
         Menu::clearScreen();
-        article.printInfo();
+        article->printInfo();
         std::cout << "===================================="
                   << "\n1. Enter new article number 0. Exit";
         std::cout << "\nChoose an option: ";

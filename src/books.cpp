@@ -20,7 +20,7 @@ Books::Books(int articleNumber)
     }
 }
 
-void Books::printInfo()
+void Books::printInfo() const
 {
     std::cout << "\nBook Information:\n";
     std::cout << "====================================\n";
