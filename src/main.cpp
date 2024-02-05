@@ -8,18 +8,28 @@
 
 void printArticleInfo(std::any &param)
 {
-    int userInputArticleNum{};
-    std::cout << "\n====================================\n";
-    std::cout << "          Article Information         \n";
-    std::cout << "====================================\n\n\n";
-    std::cout << "Please enter article number:  ";
-    std::cin >> userInputArticleNum;
+    while (true)
+    {
+        int userInputArticleNum{};
+        int userChoice{};
+        std::cout << "\n====================================\n";
+        std::cout << "          Article Information         \n";
+        std::cout << "====================================\n\n\n";
+        std::cout << "Please enter article number:  ";
+        std::cin >> userInputArticleNum;
 
-    Clothing article(userInputArticleNum);
-
-
-
-
+        Clothing article(userInputArticleNum);
+        Menu::clearScreen();
+        article.printInfo();
+        std::cout << "===================================="
+                  << "\n1. Enter new article number 0. Exit";
+        std::cout << "\nChoose an option: ";
+        std::cin >> userChoice;
+        if (userChoice==1)
+            continue;
+        else
+            break;
+    }
 
 }
 
@@ -28,9 +38,6 @@ void printArticleInfo(std::any &param)
 
 int main()
 {
-
-
-
 
 
     Menu mainMenu;
@@ -42,6 +49,7 @@ int main()
    mainMenu.addSubMenu("Make A Sale", &sale);
    mainMenu.addSubMenu("Transaction History",&transactions);
 
+   manageProducts.addMenuFunction("See Article Info",printArticleInfo);
 
 
 
