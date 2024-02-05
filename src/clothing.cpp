@@ -26,11 +26,11 @@ Clothing::Clothing(int artNumber)
     }
 }
 
-
 void Clothing::printInfo()
 {
 
     std::cout << "\nClothing Information:\n";
+    std::cout << "====================================\n";
     std::cout << "Title: " << getTitle() << "\n";
     std::cout << "Article Number: " << getArtNumber() << "\n";
     std::cout << "Purchase Price: $" << getPurchasePrice() << "\n";

@@ -9,7 +9,7 @@ private:
     std::string m_brand{};
     std::string m_size{};
     std::string m_color{};
-    const std::string m_table{"clothes"};
+    const std::string m_table{"clothes_inventory"};
 public:
     Clothing(std::string title, int artNumber, double purchasePrice, double retailPrice, int amount, std::string table, std::string size, std::string color, std::string brand);
     explicit Clothing(int artNumber);
