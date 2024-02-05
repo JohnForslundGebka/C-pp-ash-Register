@@ -13,15 +13,22 @@ void printArticleInfo(std::any &param)
     {
         int userInputArticleNum{};
         int userChoice{};
+        int typeOfArticle{};
         std::cout << "\n====================================\n";
         std::cout << "          Article Information         \n";
         std::cout << "====================================\n\n\n";
         std::cout << "Please enter article number:  ";
         std::cin >> userInputArticleNum;
-
+        typeOfArticle = (userInputArticleNum / 1000);
 
 
         Clothing article(userInputArticleNum);
+
+
+
+
+
+
         Menu::clearScreen();
         article.printInfo();
         std::cout << "===================================="
