@@ -6,22 +6,30 @@
 #include <iostream>
 #include <any>
 
+void printArticleInfo(std::any &param)
+{
+    int userInputArticleNum{};
+    std::cout << "\n====================================\n";
+    std::cout << "          Article Information         \n";
+    std::cout << "====================================\n\n\n";
+    std::cout << "Please enter article number:  ";
+    std::cin >> userInputArticleNum;
+
+    Clothing article(userInputArticleNum);
+
+
+
+
+
+}
 
 
 
 
 int main()
 {
-    auto printProd = [](std::any &param){
-        Clothing test(2005);
 
-        std::cout << "Nu har vi testar kläder. artikeln är: " << test.getTitle() << " och den har märket " << test.getBrand() << " och den kostar " << test.getRetailPrice()
-                  << "\n vi har " << test.getAmount() << "st i lager just nu";
-        std::cout << "\npress 0 to exit";
-        int choice{};
-        std::cin >> choice;
 
-    };
 
 
 
@@ -34,7 +42,7 @@ int main()
    mainMenu.addSubMenu("Make A Sale", &sale);
    mainMenu.addSubMenu("Transaction History",&transactions);
 
-   manageProducts.addMenuFunction("Show Info", printProd);
+
 
 
 

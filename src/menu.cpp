@@ -1,6 +1,6 @@
 #include "menu.h"
 
-void clearScreen()
+void Menu::clearScreen()
 {
 #if defined(_WIN32) || defined(_WIN64)
     std::system("cls");
@@ -8,8 +8,6 @@ void clearScreen()
     std::system("clear");
 #endif
 }
-
-
 
 //prints all the choices from the menu
 void Menu::displayMenuItems() const
