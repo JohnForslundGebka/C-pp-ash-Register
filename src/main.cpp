@@ -3,6 +3,7 @@
 #include "menu.h"
 #include "databaseQueries.h"
 #include "clothing.h"
+#include "books.h"
 #include <iostream>
 #include <any>
 
@@ -17,6 +18,8 @@ void printArticleInfo(std::any &param)
         std::cout << "====================================\n\n\n";
         std::cout << "Please enter article number:  ";
         std::cin >> userInputArticleNum;
+
+
 
         Clothing article(userInputArticleNum);
         Menu::clearScreen();
