@@ -22,6 +22,7 @@ void printArticleInfo(std::any &param)
         std::cout << "Please enter article number:  ";
         std::cin >> userInputArticleNum;
         typeOfArticle = (userInputArticleNum / 1000);
+        std::cout << "\ndit val blir art " << typeOfArticle;
 
         switch (typeOfArticle)
         {
