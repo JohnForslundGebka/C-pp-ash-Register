@@ -14,8 +14,10 @@ private:
 public:
     DatabaseQueries();
 
-
+    //functions that creates a SQL query for that type of object
     std::unique_ptr<SQLite::Statement> getDataFromDb(int articleNumber,const std::string &table);
+
+
     void updateAmountInDb(int articleNumber,const std::string &table);
 
 
