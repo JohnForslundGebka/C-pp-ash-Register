@@ -28,14 +28,14 @@ Clothing::Clothing(int artNumber)
 
 
 void Clothing::printInfo() {
-    std::cout << "Clothing Information:" << std::endl;
-    std::cout << "Title: " << getTitle() << std::endl;
-    std::cout << "Article Number: " << getArtNumber() << std::endl;
-    std::cout << "Purchase Price: $" << getPurchasePrice() << std::endl;
-    std::cout << "Retail Price: $" << getRetailPrice() << std::endl;
-    std::cout << "Amount in Stock: " << getAmount() << std::endl;
-    std::cout << "Size: " << getSize() << std::endl;
-    std::cout << "Color: " << getColor() << std::endl;
-    std::cout << "Brand: " << getBrand() << std::endl;
+    std::cout << "Clothing Information:\n";
+    std::cout << "Title: " << getTitle() << "\n";
+    std::cout << "Article Number: " << getArtNumber() << "\n";
+    std::cout << "Purchase Price: $" << getPurchasePrice() << "\n";
+    std::cout << "Retail Price: $" << getRetailPrice() << "\n";
+    std::cout << "Size: " << getSize() << "\n";
+    std::cout << "Color: " << getColor() << "\n";
+    std::cout << "Brand: " << getBrand() << "\n";
+    std::cout << "Amount in Stock: " << getAmount() << "\n";
 }
 
