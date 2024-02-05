@@ -19,6 +19,8 @@ public:
     std::string getSize() const { return m_size; }
     std::string getColor() const { return m_color; }
 
+    void printInfo();
+
 };
 
 

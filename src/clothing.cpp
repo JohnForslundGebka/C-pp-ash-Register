@@ -24,6 +24,11 @@ Clothing::Clothing(int artNumber)
         m_color = query->getColumn("color").getText();
         m_brand = query->getColumn("brand").getText();
     }
+}
+
+
+void Clothing::printInfo()
+{
 
 }
 
