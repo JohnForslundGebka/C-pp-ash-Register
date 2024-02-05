@@ -49,6 +49,7 @@ void Menu::run()
             if (std::holds_alternative<function>(selected.func)) {
 
                 std::any param;
+                clearScreen();
                 std::get<function>(selected.func)(param);
 
             } else if (std::holds_alternative<Menu *>(selected.func)) {

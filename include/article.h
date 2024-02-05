@@ -14,7 +14,7 @@ private:
 
 public:
     Article(std::string title, int artNumber, double purchasePrice,  double retailPrice, int amount);
-    Article();
+    Article() : m_artNumber(0), m_purchasePrice(0.0), m_retailPrice(0.0), m_amount(0) {}  //default constructor
 
     //get functions
     std::string getTitle() const { return m_title; }
@@ -22,6 +22,7 @@ public:
     double getPurchasePrice() const { return m_purchasePrice; }
     double getRetailPrice() const { return m_retailPrice; }
     int getAmount() const { return m_amount; }
+
 
     // Setter functions
     void setTitle(const std::string& title) { m_title = title; }
