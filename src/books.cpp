@@ -20,16 +20,14 @@ Books::Books(int articleNumber)
     }
 }
 
-void Books::printInfo() const
-{
+void Books::printInfo() const {
     std::cout << "\nBook Information:\n";
     std::cout << "====================================\n";
-    std::cout << "Title: " << getTitle() << "\n";
-    std::cout << "Author: " << m_author << "\n";
-    std::cout << "Article Number: " << getArtNumber() << "\n";
-    std::cout << "ISBN: " << m_isbn << "\n";
-    std::cout << "Purchase Price: $" << getPurchasePrice() << "\n";
-    std::cout << "Retail Price: $" << getRetailPrice() << "\n";
-    std::cout << "Amount in Stock: " << getAmount() << "\n";
-
+    std::cout << std::left << std::setw(20) << "Title: " << getTitle() << "\n";
+    std::cout << std::setw(20) << "Author: " << m_author << "\n";
+    std::cout << std::setw(20) << "Article Number: " << getArtNumber() << "\n";
+    std::cout << std::setw(20) << "ISBN: " << m_isbn << "\n";
+    std::cout << std::setw(20) << "Purchase Price: " << "$" << getPurchasePrice() << "\n";
+    std::cout << std::setw(20) << "Retail Price: " << "$" << getRetailPrice() << "\n";
+    std::cout << std::setw(20) << "Amount in Stock: " << getAmount() << "\n";
 }

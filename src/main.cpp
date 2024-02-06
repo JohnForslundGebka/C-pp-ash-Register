@@ -1,9 +1,9 @@
-#include "databaseQueries.h"
 #include "article.h"
 #include "menu.h"
 #include "databaseQueries.h"
 #include "clothing.h"
 #include "books.h"
+#include <iomanip>
 #include <iostream>
 #include <memory>
 #include <any>
@@ -22,8 +22,6 @@ void printArticleInfo(std::any &param)
         std::cout << "Please enter article number:  ";
         std::cin >> userInputArticleNum;
         typeOfArticle = (userInputArticleNum / 1000);
-        std::cout << "\ndit val blir art " << typeOfArticle;
-
         switch (typeOfArticle)
         {
             case 1:
@@ -48,11 +46,7 @@ void printArticleInfo(std::any &param)
         else
             break;
     }
-
 }
-
-
-
 
 int main()
 {
