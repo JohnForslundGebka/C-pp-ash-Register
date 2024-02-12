@@ -1,40 +1,46 @@
 #include "menuFunction.h"
-#include "article.h"
-#include "menu.h"
-#include "databaseQueries.h"
-#include "clothing.h"
-#include "books.h"
-#include "laptops.h"
 
+std::unique_ptr<Article> MenuFunction::createArticle(int articleNumber)
+{
+   int typeOfArticle = (articleNumber / 1000);  //used to get the starting number of the article
+    switch (typeOfArticle)
+    {
+        case 1:
+            return std::make_unique<Books>(articleNumber);
+
+        case 2:
+            return std::make_unique<Clothing>(articleNumber);
+
+        case 3:
+            return std::make_unique<Laptops>(articleNumber);
+
+        default:
+            std::cout << "ERROR MED SWITCH";
+            return nullptr;
+
+    }
+
+}
 
 void MenuFunction::printArticleInfo(std::any &param)
 {
-    std::unique_ptr<Article> article;
+
     while (true)
     {
         int userInputArticleNum{};
         int userChoice{};
-        int typeOfArticle{};
+
         std::cout << "\n====================================\n";
         std::cout << "          Article Information         \n";
         std::cout << "====================================\n\n\n";
         std::cout << "Please enter article number:  ";
         std::cin >> userInputArticleNum;
-        typeOfArticle = (userInputArticleNum / 1000);  //used to get the starting number of the article
-        switch (typeOfArticle)
+        std::unique_ptr<Article> article = MenuFunction::createArticle(userInputArticleNum);
+
+        if (!article)  // Check if article is nullptr
         {
-            case 1:
-                article = std::make_unique<Books>(userInputArticleNum);
-                break;
-            case 2:
-                article = std::make_unique<Clothing>(userInputArticleNum);
-                break;
-            case 3:
-                article = std::make_unique<Laptops>(userInputArticleNum);
-                break;
-            default:
-                std::cout << "ERROR MED SWITCH";
-                break;
+            std::cout << "Invalid article number. Please try again.\n";
+            continue;  // Prompt the user again
         }
 
         Menu::clearScreen();
@@ -48,5 +54,15 @@ void MenuFunction::printArticleInfo(std::any &param)
         else
             break;
     }
+}
+
+
+void MenuFunction::sale()
+{
+    std::cout << "\n====================================\n";
+    std::cout << "          Make A Sale                 \n";
+    std::cout << "====================================\n\n\n";
+    std::cout << "Please enter article number:  ";
+
 }
 
