@@ -3,11 +3,13 @@
 #include "databaseQueries.h"
 #include "clothing.h"
 #include "books.h"
+#include "laptops.h"
 #include <iomanip>
 #include <iostream>
 #include <memory>
 #include <any>
 
+//function for printing article info
 void printArticleInfo(std::any &param)
 {
     std::unique_ptr<Article> article;
@@ -21,7 +23,7 @@ void printArticleInfo(std::any &param)
         std::cout << "====================================\n\n\n";
         std::cout << "Please enter article number:  ";
         std::cin >> userInputArticleNum;
-        typeOfArticle = (userInputArticleNum / 1000);
+        typeOfArticle = (userInputArticleNum / 1000);  //used to get the starting number of the article
         switch (typeOfArticle)
         {
             case 1:
@@ -50,7 +52,6 @@ void printArticleInfo(std::any &param)
 
 int main()
 {
-
 
     Menu mainMenu;
    Menu manageProducts;

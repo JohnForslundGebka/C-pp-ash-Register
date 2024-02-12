@@ -10,6 +10,8 @@ add_executable(C-pp-ash-Register src/main.cpp
         src/databaseQueries.cpp
         src/clothing.cpp
         src/books.cpp
+        src/laptops.cpp
+        include/laptops.h
 )
 
 target_include_directories(C-pp-ash-Register PUBLIC "${PROJECT_BINARY_DIR}" "include")

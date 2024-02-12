@@ -28,7 +28,6 @@ Clothing::Clothing(int artNumber)
 
 void Clothing::printInfo() const
 {
-
     std::cout << "\nClothing Information:\n";
     std::cout << "====================================\n";
     std::cout << "Title: " << getTitle() << "\n";
