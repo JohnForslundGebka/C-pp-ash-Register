@@ -21,3 +21,6 @@ std::unique_ptr<SQLite::Statement> DatabaseQueries::getDataFromDb(int articleNum
         return nullptr;
     }
 }
+
+
+

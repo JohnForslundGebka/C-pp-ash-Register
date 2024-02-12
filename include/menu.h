@@ -17,7 +17,7 @@ private:
         std::string name{};
         std::variant<function, Menu*> func;
     };
-    std::vector<MenuItem> items{};
+    std::vector<MenuItem> items{};  //vector that contains all the menuitem structs
 public:
     void displayMenuItems() const;
 

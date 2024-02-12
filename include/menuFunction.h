@@ -7,7 +7,7 @@ class MenuFunction
 {
 public:
     static void printArticleInfo(std::any &param);
-
+    static void sale();
 
 
 };

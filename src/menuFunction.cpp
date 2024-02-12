@@ -49,3 +49,4 @@ void MenuFunction::printArticleInfo(std::any &param)
             break;
     }
 }
+
