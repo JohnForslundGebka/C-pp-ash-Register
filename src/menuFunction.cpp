@@ -59,10 +59,34 @@ void MenuFunction::printArticleInfo(std::any &param)
 
 void MenuFunction::sale()
 {
+
+    int userInputArticleNum{};
+    int userChoice{};
     std::cout << "\n====================================\n";
     std::cout << "          Make A Sale                 \n";
     std::cout << "====================================\n\n\n";
-    std::cout << "Please enter article number:  ";
+
+    std::cout << std::left << std::setw(10) << "ArtNumber" << " | "
+              << std::setw(20) << "Name" << " | "
+              << std::setw(15) << "Amount in Stock" << " | "
+              << std::setw(15) << "Amount to Sell" << " | "
+              << std::setw(10) << "Price"
+              << "\n";
+    while (true)
+    {
+
+
+
+
+        std::cout << "Please enter article number:  ";
+        std::cin >> userInputArticleNum;
+    }
+
+
+
+
+
+
 
 }
 
