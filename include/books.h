@@ -12,8 +12,8 @@ private:
    long m_isbn{};
    const std::string m_table{"books_inventory"};
 public:
-    Books() : m_author(0), m_isbn(0), m_table(0){}
-    Books(int articleNumber);
+    Books() : m_author(), m_isbn(0){}   //default constructor
+    explicit Books(int articleNumber);
 
     //getter function
     std::string getAuthor() const { return m_author; }
