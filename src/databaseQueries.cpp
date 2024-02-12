@@ -22,8 +22,13 @@ std::unique_ptr<SQLite::Statement> DatabaseQueries::getDataFromDb(int articleNum
     }
 }
 
-bool DatabaseQueries::updateAmountInDb(int articleNumber, const std::string &table)
+//function that changes the amount of the article in stock
+bool DatabaseQueries::updateAmountInDb(int articleNumber, const std::string &table, int newAmount)
 {
+    std::string sql = "UPDATE " + table + " SET amount = ? WHERE articleNumber = ?";
+    SQLite::Statement query(*db, sql);  //create the SQL statement
+
+
 
 }
 

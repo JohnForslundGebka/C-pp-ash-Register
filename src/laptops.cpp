@@ -13,7 +13,7 @@ Laptops::Laptops(int articleNumber)
         setArtNumber(articleNumber);
         setPurchasePrice(query->getColumn("purchase_price").getDouble());
         setRetailPrice(query->getColumn("retail_price").getDouble());
-        setAmount(query->getColumn("amount").getInt());
+        setAmount(query->getColumn("amount_in_stock").getInt());
         m_brand  = (query->getColumn("brand").getText());
         m_ram  = (query->getColumn("ram").getText());
         m_cpu  = (query->getColumn("cpu").getText());
