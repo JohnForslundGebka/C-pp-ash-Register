@@ -63,10 +63,11 @@ void MenuFunction::sale(std::any &param)
     int userInputArticleNum{};
     int userChoice{};
     int amountToSell{0};
+    double totalPrice{};
     Menu::clearScreen();
 
     //lambda function for storing the print header
-    auto printSaleHeader = []() {
+    auto printSaleHeader = [](){
         std::cout << "\n====================================\n";
         std::cout << "          Make A Sale                 \n";
         std::cout << "====================================\n\n\n";
@@ -77,13 +78,13 @@ void MenuFunction::sale(std::any &param)
                   << std::setw(10) << "Price"
                   << "\n--------------------------------------------------------------------------------------\n";
     };
+
     while (true)
     {
         Menu::clearScreen();
         printSaleHeader();
         for (auto &article: articles)
         {
-
             std::cout << std::left
                       << std::setw(10) << article.first->getArtNumber() << " | "
                       << std::setw(25) << article.first->getTitle() << " | "
@@ -91,8 +92,10 @@ void MenuFunction::sale(std::any &param)
                       << std::setw(15) << amountToSell << " | "
                       << "$" << std::setw(9) << std::fixed << std::setprecision(2) << article.first->getRetailPrice()
                       << "\n";
+            totalPrice += (article.first->getRetailPrice() * amountToSell);
         }
-        std::cout << "--------------------------------------------------------------------------------------\n";
+        std::cout << "\nTOTAL: " << totalPrice;
+        std::cout << "\n--------------------------------------------------------------------------------------\n";
         std::cout << "\nPlease enter article number (0 to exit):  ";
         std::cout << "\nOr enter 1 to make a sale : ";
         std::cin >> userInputArticleNum;
@@ -100,10 +103,13 @@ void MenuFunction::sale(std::any &param)
             break;
         else if (userInputArticleNum==1)
         {
+            DatabaseQueries q1;
             for (auto &article: articles)
             {
-                DatabaseQueries::updateAmountInDb(article.first->getArtNumber(),article.first->get)
+                q1.updateAmountInDb(article.first->getArtNumber(),article.first->getTable(),
+                                    (article.first->getAmount() - article.second));
             }
+            return;
         }
 
         auto article = MenuFunction::createArticle(userInputArticleNum);
