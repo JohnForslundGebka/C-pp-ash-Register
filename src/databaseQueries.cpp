@@ -22,5 +22,8 @@ std::unique_ptr<SQLite::Statement> DatabaseQueries::getDataFromDb(int articleNum
     }
 }
 
+bool DatabaseQueries::updateAmountInDb(int articleNumber, const std::string &table)
+{
 
+}
 

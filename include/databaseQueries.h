@@ -18,7 +18,7 @@ public:
     std::unique_ptr<SQLite::Statement> getDataFromDb(int articleNumber,const std::string &table);
 
 
-    void updateAmountInDb(int articleNumber,const std::string &table);
+    bool updateAmountInDb(int articleNumber,const std::string &table);
 
 
 
