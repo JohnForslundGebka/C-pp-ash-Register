@@ -12,6 +12,7 @@ using function = std::function<void(std::any& param)>;
 class Menu
 {
 private:
+    //a menuitem struct. This can either be pointer to a menu object, or a function
     struct MenuItem {
         std::string name{};
         std::variant<function, Menu*> func;
