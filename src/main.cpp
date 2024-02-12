@@ -68,9 +68,7 @@ int main()
    manageProducts.addMenuFunction("See Article Info",printArticleInfo);
 
 
-
-
-     mainMenu.run();
+   mainMenu.run();
 
 
 
