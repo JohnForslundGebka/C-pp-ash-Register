@@ -32,6 +32,9 @@ void printArticleInfo(std::any &param)
             case 2:
                 article = std::make_unique<Clothing>(userInputArticleNum);
                 break;
+            case 3:
+                article = std::make_unique<Laptops>(userInputArticleNum);
+                break;
             default:
                 std::cout << "ERROR MED SWITCH";
                 break;
