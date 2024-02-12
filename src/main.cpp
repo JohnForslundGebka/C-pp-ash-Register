@@ -24,6 +24,7 @@ int main()
    mainMenu.addSubMenu("Transaction History",&transactions);
 
    manageProducts.addMenuFunction("See Article Info",MenuFunction::printArticleInfo);
+   sale.addMenuFunction("Make a sale",MenuFunction::sale);
 
 
    mainMenu.run();

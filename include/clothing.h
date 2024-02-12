@@ -18,6 +18,7 @@ public:
     std::string getBrand() const { return m_brand; }
     std::string getSize() const { return m_size; }
     std::string getColor() const { return m_color; }
+    std::string getTable() const override { return m_table; }
 
     void printInfo()const override;
 

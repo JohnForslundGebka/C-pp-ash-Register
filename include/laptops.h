@@ -20,6 +20,7 @@ public:
     std::string getRam() const { return m_ram; }
     std::string getCpu() const { return m_cpu; }
     std::string getHardDrive() const { return m_hardDrive; }
+    std::string getTable() const override { return m_table; }
 
     void printInfo() const override;
 

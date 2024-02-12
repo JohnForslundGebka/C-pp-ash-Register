@@ -22,7 +22,7 @@ public:
     double getPurchasePrice() const { return m_purchasePrice; }
     double getRetailPrice() const { return m_retailPrice; }
     int getAmount() const { return m_amount; }
-
+    virtual std::string getTable() const = 0;  // Pure virtual function
 
     // Setter functions
     void setTitle(const std::string& title) { m_title = title; }
@@ -30,6 +30,7 @@ public:
     void setPurchasePrice(double purchasePrice) { m_purchasePrice = purchasePrice; }
     void setRetailPrice(double retailPrice) { m_retailPrice = retailPrice; }
     void setAmount(int amount) { m_amount = amount; }
+
 
     virtual void printInfo() const = 0; // Pure virtual function
 

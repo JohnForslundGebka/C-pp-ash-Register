@@ -6,15 +6,17 @@
 #include "clothing.h"
 #include "books.h"
 #include "laptops.h"
-
 #include <any>
 #include <iostream>
+#include <vector>
+#include <utility>
+
 
 class MenuFunction
 {
 public:
     static void printArticleInfo(std::any &param);
-    static void sale();
+    static void sale(std::any &param);
     static std::unique_ptr<Article>createArticle(int articleNumber);
 
 };

@@ -18,6 +18,7 @@ public:
     //getter function
     std::string getAuthor() const { return m_author; }
     long getIsbn() const { return m_isbn; }
+    std::string getTable() const override { return m_table; }
 
     void printInfo() const override;
 
