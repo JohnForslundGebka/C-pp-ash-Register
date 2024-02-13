@@ -138,3 +138,10 @@ void MenuFunction::sale(std::any &param)
 
 }
 
+void MenuFunction::createReceipt(std::vector<std::pair<std::unique_ptr<Article>, int>>)
+{
+
+
+
+
+}
