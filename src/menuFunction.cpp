@@ -58,8 +58,8 @@ void MenuFunction::printArticleInfo(std::any &param)
 
 void MenuFunction::sale(std::any &param)
 {
-
-    std::vector<std::pair<std::unique_ptr<Article>, int>> articles;  // Vector with pair of articles and amount to sell
+    // Vector with std::pair with articles and amount to sell
+    std::vector<std::pair<std::unique_ptr<Article>, int>> articles;
     int userInputArticleNum{};
     int userChoice{};
     int amountToSell{0};
@@ -83,6 +83,7 @@ void MenuFunction::sale(std::any &param)
     {
         Menu::clearScreen();
         printSaleHeader();
+        //print out article information
         for (auto &article: articles)
         {
             std::cout << std::left
@@ -103,26 +104,30 @@ void MenuFunction::sale(std::any &param)
             break;
         else if (userInputArticleNum==1)
         {
+            //create a databasequery object that will be used to make a query to DB
             DatabaseQueries q1;
             for (auto &article: articles)
             {
+                //update the amount of an article in the DB
                 q1.updateAmountInDb(article.first->getArtNumber(),article.first->getTable(),
                                     (article.first->getAmount() - article.second));
             }
-            return;
+            return; //exit function when done updating the amount of articles in DB
         }
 
+        //create a pointer that points to a article subclass (laptop, books, or clothes)
         auto article = MenuFunction::createArticle(userInputArticleNum);
-        if (!article)   // Check if article is nullptr
+        if (!article)   // Check if article is nullptr aka wrong article number was entered
         {
             std::cout << "Invalid article number. Please try again.\n";
             std::cin.clear();
             std::cin.ignore(256, '\n'); // Ignores the rest of the incorrect input
             continue;  // Skip adding to the vector and prompt again
         }
+        //checks how many to sell
         std::cout << "\nAmount to sell: ";
         std::cin >> amountToSell;
-        articles.emplace_back(std::move(article), amountToSell);
+        articles.emplace_back(std::move(article), amountToSell);  //add the new article pointer to vector
     }
 
 

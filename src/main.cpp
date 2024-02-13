@@ -15,9 +15,9 @@ int main()
 {
 
     Menu mainMenu;
-   Menu manageProducts;
-   Menu sale;
-   Menu transactions;
+    Menu manageProducts;
+    Menu sale;
+    Menu transactions;
 
    mainMenu.addSubMenu("Manage Products", &manageProducts);
    mainMenu.addSubMenu("Make A Sale", &sale);
