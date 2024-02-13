@@ -114,6 +114,7 @@ void MenuFunction::sale(std::any &param)
                 q1.updateAmountInDb(article.first->getArtNumber(),article.first->getTable(),
                                     (article.first->getAmount() - article.second));
             }
+            MenuFunction::createReceipt(articles); //create and "print" a receipt
             return; //exit function when done updating the amount of articles in DB
         }
 
@@ -131,13 +132,6 @@ void MenuFunction::sale(std::any &param)
         std::cin >> amountToSell;
         articles.emplace_back(std::move(article), amountToSell);  //add the new article pointer to vector
     }
-
-
-
-
-
-
-
 }
 
 void MenuFunction::createReceipt(std::vector<std::pair<std::unique_ptr<Article>, int>> &articles)
@@ -153,10 +147,12 @@ void MenuFunction::createReceipt(std::vector<std::pair<std::unique_ptr<Article>,
 
     // Define the range
     std::uniform_int_distribution<> distrib(10000000, 99999999);
-
+    //create number
     long recNumber{distrib(gen)};
-    std::string recName = "r" + std::to_string(recNumber) + ".txt";  //create a string that will be the number/name of the receipt
+    //create a string that will be the number/name of the receipt
+    std::string recName = "r" + std::to_string(recNumber) + ".txt";
 
+    //check if file could be created
     std::ofstream outf{ recName };
     if (!outf)
     {
@@ -172,17 +168,27 @@ void MenuFunction::createReceipt(std::vector<std::pair<std::unique_ptr<Article>,
               << "(203) 333-2478\n"
               << "-------------------------------------------------\n"
               << std::put_time(&tm, "%a %b %d %H:%M:%S %Y") << std::endl // Formats the date and time
-              << "\nCASHIER: John\n\n"
+              << "\nCASHIER: John\n"
+              << "Receipt Number:" << std::to_string(recNumber) << "\n\n"
               << "  Item              QTY  Unit Price    Total\n"
               << "-------------------------------------------------\n";
 
+    double totalPrice{};
+    // Print the items, quantities, unit prices, and totals
     for (auto &article: articles)
     {
+        double totPriceOfArticles = (article.first->getRetailPrice() * article.second);
 
+        outf << std::setw(20) << article.first->getTitle()
+             << std::setw(5) << article.second
+             << "$" << std::setw(9) << std::fixed << std::setprecision(2) << article.first->getRetailPrice()
+             << std::setw(12) << totPriceOfArticles << std::endl;
+        totalPrice += totPriceOfArticles;
     }
 
-
-
+    // Print the footer of the receipt
+    outf << "=================================================\n"
+         << std::right << std::setw(47) << "Total" << std::setw(12) << "5.85" << std::endl;
 
 
 }
