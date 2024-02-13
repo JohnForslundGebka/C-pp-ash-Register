@@ -106,7 +106,7 @@ void MenuFunction::sale(std::any &param)
             break;
         else if (userInputArticleNum==1)
         {
-            //create a databasequery object that will be used to make a query to DB
+            //create a databasequery object that will be used to make a query to DB and update amount
             DatabaseQueries q1;
             for (auto &article: articles)
             {
@@ -118,7 +118,7 @@ void MenuFunction::sale(std::any &param)
             return; //exit function when done updating the amount of articles in DB
         }
 
-        //create a pointer that points to a article subclass (laptop, books, or clothes)
+        //create a pointer that points to an article subclass (laptop, books, or clothes)
         auto article = MenuFunction::createArticle(userInputArticleNum);
         if (!article)   // Check if article is nullptr aka wrong article number was entered
         {
@@ -162,9 +162,9 @@ void MenuFunction::createReceipt(std::vector<std::pair<std::unique_ptr<Article>,
     }
 
     // Print the header of the receipt
-    outf << "Colin's Capital Ventures\n"
+    outf      << "John's Capital Ventures\n"
               << "Fjallgatan,\n"
-              << "Gothenburg, CT, 06119\n"
+              << "Gothenburg, SWE, 06119\n"
               << "(203) 333-2478\n"
               << "-------------------------------------------------\n"
               << std::put_time(&tm, "%a %b %d %H:%M:%S %Y") << std::endl // Formats the date and time
@@ -179,16 +179,16 @@ void MenuFunction::createReceipt(std::vector<std::pair<std::unique_ptr<Article>,
     {
         double totPriceOfArticles = (article.first->getRetailPrice() * article.second);
 
-        outf << std::setw(20) << article.first->getTitle()
-             << std::setw(5) << article.second
-             << "$" << std::setw(9) << std::fixed << std::setprecision(2) << article.first->getRetailPrice()
-             << std::setw(12) << totPriceOfArticles << std::endl;
+        outf << std::setw(17) << article.first->getTitle()
+             << std::setw(6) << article.second
+             << std::setw(9) << std::fixed << std::setprecision(2) << article.first->getRetailPrice()  << "$"
+             << std::setw(12) << totPriceOfArticles  << "$" << std::endl;
         totalPrice += totPriceOfArticles;
     }
 
     // Print the footer of the receipt
     outf << "=================================================\n"
-         << std::right << std::setw(47) << "Total" << std::setw(12) << "5.85" << std::endl;
+         << std::right << std::setw(30) << "Total:" << std::setw(15) << totalPrice  << "$" << std::endl;
 
 
 }
