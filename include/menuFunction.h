@@ -10,6 +10,10 @@
 #include <iostream>
 #include <vector>
 #include <utility>
+#include <random>
+#include <fstream>
+#include <string>
+#include <ctime>
 
 
 class MenuFunction
@@ -18,7 +22,7 @@ public:
     static void printArticleInfo(std::any &param);
     static void sale(std::any &param);
     static std::unique_ptr<Article>createArticle(int articleNumber);
-    void createReceipt( std::vector<std::pair<std::unique_ptr<Article>, int>>);
+    void createReceipt( std::vector<std::pair<std::unique_ptr<Article>, int>>&articles);
 };
 
 

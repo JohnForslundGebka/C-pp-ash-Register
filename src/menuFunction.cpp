@@ -1,5 +1,7 @@
 #include "menuFunction.h"
 
+
+
 std::unique_ptr<Article> MenuFunction::createArticle(int articleNumber)
 {
    int typeOfArticle = (articleNumber / 1000);  //used to get the starting number of the article
@@ -138,8 +140,47 @@ void MenuFunction::sale(std::any &param)
 
 }
 
-void MenuFunction::createReceipt(std::vector<std::pair<std::unique_ptr<Article>, int>>)
+void MenuFunction::createReceipt(std::vector<std::pair<std::unique_ptr<Article>, int>> &articles)
 {
+
+    // Get the current date and time
+    auto t = std::time(nullptr);
+    auto tm = *std::localtime(&t);
+
+    // Random number engine
+    std::random_device rd; // Obtain a random number from hardware
+    std::mt19937 gen(rd()); // Seed the generator
+
+    // Define the range
+    std::uniform_int_distribution<> distrib(10000000, 99999999);
+
+    long recNumber{distrib(gen)};
+    std::string recName = "r" + std::to_string(recNumber) + ".txt";  //create a string that will be the number/name of the receipt
+
+    std::ofstream outf{ recName };
+    if (!outf)
+    {
+        // Print an error and exit
+        std::cerr << "Uh oh, Sample.txt could not be opened for writing!\n";
+        return;
+    }
+
+    // Print the header of the receipt
+    outf << "Colin's Capital Ventures\n"
+              << "Fjallgatan,\n"
+              << "Gothenburg, CT, 06119\n"
+              << "(203) 333-2478\n"
+              << "-------------------------------------------------\n"
+              << std::put_time(&tm, "%a %b %d %H:%M:%S %Y") << std::endl // Formats the date and time
+              << "\nCASHIER: John\n\n"
+              << "  Item              QTY  Unit Price    Total\n"
+              << "-------------------------------------------------\n";
+
+    for (auto &article: articles)
+    {
+
+    }
+
 
 
 
