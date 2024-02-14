@@ -24,6 +24,7 @@ std::unique_ptr<Article> MenuFunction::createArticle(int articleNumber)
 
 }
 
+//function that prints out the info about selected article, name, price and so on
 void MenuFunction::printArticleInfo(std::any &param)
 {
 
@@ -64,7 +65,6 @@ void MenuFunction::sale(std::any &param)
     std::vector<std::pair<std::unique_ptr<Article>, int>> articles;
     int userInputArticleNum{};
     int userChoice{};
-    int amountToSell{0};
     double totalPrice{};
     Menu::clearScreen();
 
@@ -83,6 +83,7 @@ void MenuFunction::sale(std::any &param)
 
     while (true)
     {
+        int amountToSell{};
         Menu::clearScreen();
         printSaleHeader();
         //print out article information
@@ -97,16 +98,18 @@ void MenuFunction::sale(std::any &param)
                       << "\n";
             totalPrice += (article.first->getRetailPrice() * amountToSell);
         }
+
         std::cout << "\nTOTAL: " << totalPrice;
         std::cout << "\n--------------------------------------------------------------------------------------\n";
         std::cout << "\nPlease enter article number (0 to exit):  ";
         std::cout << "\nOr enter 1 to make a sale : ";
         std::cin >> userInputArticleNum;
+
         if (userInputArticleNum==0)
             break;
         else if (userInputArticleNum==1)
         {
-            //create a databasequery object that will be used to make a query to DB and update amount
+            //create a database query object that will be used to make a query to DB and update amount
             DatabaseQueries q1;
             for (auto &article: articles)
             {
@@ -134,6 +137,7 @@ void MenuFunction::sale(std::any &param)
     }
 }
 
+//creates a .txt with the receipt for the sale
 void MenuFunction::createReceipt(std::vector<std::pair<std::unique_ptr<Article>, int>> &articles)
 {
 
