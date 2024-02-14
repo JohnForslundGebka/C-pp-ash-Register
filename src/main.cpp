@@ -9,10 +9,12 @@
 #include <iostream>
 #include <memory>
 #include <any>
+#include <vector>
 
 
 int main()
 {
+    static std::vector<std::string> transactionNumbers;
 
     Menu mainMenu;
     Menu manageProducts;

@@ -109,8 +109,7 @@ void MenuFunction::sale(std::any &param)
         std::cout << "\nTOTAL: " << totalPrice;
         std::cout << "\n--------------------------------------------------------------------------------------\n";
         if (wrongArtNumber) std::cout << "Article number does not exist";
-        std::cout << "\nPlease enter article number (0 to exit):  ";
-        std::cout << "\nOr enter 1 to make a sale : ";
+        std::cout << "\nPlease enter article number, or enter 1 to make a sale (0 to exit) :  ";
         std::cin >> userInputArticleNum;
 
         if (userInputArticleNum==0)
@@ -170,7 +169,7 @@ void MenuFunction::createReceipt(std::vector<std::pair<std::unique_ptr<Article>,
     if (!outf)
     {
         // Print an error and exit
-        std::cerr << "Uh oh, Sample.txt could not be opened for writing!\n";
+        std::cerr << "Uh oh, .txt could not be opened for writing!\n";
         return;
     }
 
@@ -192,9 +191,9 @@ void MenuFunction::createReceipt(std::vector<std::pair<std::unique_ptr<Article>,
     {
         double totPriceOfArticles = (article.first->getRetailPrice() * article.second);
 
-        outf << std::setw(17) << article.first->getTitle()
-             << std::setw(6) << article.second
-             << std::setw(9) << std::fixed << std::setprecision(2) << article.first->getRetailPrice()  << "$"
+        outf << std::left << std::setw(20) << article.first->getTitle()
+             << std::setw(7) << article.second
+             << std::setw(10) << std::fixed << std::setprecision(2) << article.first->getRetailPrice()  << "$"
              << std::setw(12) << totPriceOfArticles  << "$" << std::endl;
         totalPrice += totPriceOfArticles;
     }
