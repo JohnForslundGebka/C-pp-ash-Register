@@ -61,9 +61,15 @@ void MenuFunction::printArticleInfo(std::any &param)
 
 void MenuFunction::sale(std::any &param)
 {
+
+    auto errorMsg = [](){
+
+    };
+
     // Vector with std::pair with articles and amount to sell
     std::vector<std::pair<std::unique_ptr<Article>, int>> articles;
     int userInputArticleNum{};
+    bool wrongArtNumber{false};
     int userChoice{};
     double totalPrice{};
     Menu::clearScreen();
@@ -93,14 +99,16 @@ void MenuFunction::sale(std::any &param)
                       << std::setw(10) << article.first->getArtNumber() << " | "
                       << std::setw(25) << article.first->getTitle() << " | "
                       << std::setw(15) << article.first->getAmount() << " | "
-                      << std::setw(15) << amountToSell << " | "
+                      << std::setw(15) << article.second << " | "
                       << "$" << std::setw(9) << std::fixed << std::setprecision(2) << article.first->getRetailPrice()
                       << "\n";
-            totalPrice += (article.first->getRetailPrice() * amountToSell);
+          if (!wrongArtNumber)
+              totalPrice += (article.first->getRetailPrice() * article.second);
         }
 
         std::cout << "\nTOTAL: " << totalPrice;
         std::cout << "\n--------------------------------------------------------------------------------------\n";
+        if (wrongArtNumber) std::cout << "Article number does not exist";
         std::cout << "\nPlease enter article number (0 to exit):  ";
         std::cout << "\nOr enter 1 to make a sale : ";
         std::cin >> userInputArticleNum;
@@ -128,19 +136,20 @@ void MenuFunction::sale(std::any &param)
             std::cout << "Invalid article number. Please try again.\n";
             std::cin.clear();
             std::cin.ignore(256, '\n'); // Ignores the rest of the incorrect input
+            wrongArtNumber = true;
             continue;  // Skip adding to the vector and prompt again
         }
         //checks how many to sell
         std::cout << "\nAmount to sell: ";
         std::cin >> amountToSell;
         articles.emplace_back(std::move(article), amountToSell);  //add the new article pointer to vector
+        wrongArtNumber = false;
     }
 }
 
 //creates a .txt with the receipt for the sale
 void MenuFunction::createReceipt(std::vector<std::pair<std::unique_ptr<Article>, int>> &articles)
 {
-
     // Get the current date and time
     auto t = std::time(nullptr);
     auto tm = *std::localtime(&t);
