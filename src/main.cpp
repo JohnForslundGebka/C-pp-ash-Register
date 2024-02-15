@@ -1,12 +1,12 @@
 #include "article.h"
 #include "menu.h"
 #include "menuFunction.h"
-#include <vector>
+
 
 
 int main()
 {
-    static std::vector<std::string> transactionNumbers;
+
 
     Menu mainMenu;
     Menu manageProducts;

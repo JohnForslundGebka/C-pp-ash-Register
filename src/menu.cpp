@@ -1,4 +1,5 @@
 #include "menu.h"
+#include <vector>
 
 void Menu::clearScreen()
 {
@@ -46,7 +47,7 @@ void Menu::run()
 
             if (std::holds_alternative<function>(selected.func)) {
 
-                std::any param;
+                std::any param = std::vector<std::string>();
                 clearScreen();
                 std::get<function>(selected.func)(param);
 
