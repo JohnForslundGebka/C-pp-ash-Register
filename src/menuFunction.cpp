@@ -163,6 +163,8 @@ void MenuFunction::createReceipt(std::vector<std::pair<std::unique_ptr<Article>,
     long recNumber{distrib(gen)};
     //create a string that will be the number/name of the receipt
     std::string recName = "r" + std::to_string(recNumber) + ".txt";
+    //Add the receipt number to the vector containing all the receipt numbers of this session
+    recVector.push_back(recName);
 
     //check if file could be created
     std::ofstream outf{ recName };
