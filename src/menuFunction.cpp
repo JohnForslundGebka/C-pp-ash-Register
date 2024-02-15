@@ -62,10 +62,6 @@ void MenuFunction::printArticleInfo(std::any &param)
 void MenuFunction::sale(std::any &param)
 {
 
-    auto errorMsg = [](){
-
-    };
-
     // Vector with std::pair with articles and amount to sell
     std::vector<std::pair<std::unique_ptr<Article>, int>> articles;
     int userInputArticleNum{};
@@ -124,7 +120,7 @@ void MenuFunction::sale(std::any &param)
                 q1.updateAmountInDb(article.first->getArtNumber(),article.first->getTable(),
                                     (article.first->getAmount() - article.second));
             }
-            MenuFunction::createReceipt(articles); //create and "print" a receipt
+            MenuFunction::createReceipt(articles, param); //create and "print" a receipt
             return; //exit function when done updating the amount of articles in DB
         }
 
@@ -146,9 +142,13 @@ void MenuFunction::sale(std::any &param)
     }
 }
 
-//creates a .txt with the receipt for the sale
-void MenuFunction::createReceipt(std::vector<std::pair<std::unique_ptr<Article>, int>> &articles)
+//creates a .txt with the receipt for the sale. And saves the number in a vector of strings
+void MenuFunction::createReceipt(std::vector<std::pair<std::unique_ptr<Article>, int>> &articles, std::any &param)
 {
+
+    //extract the vector from the std::any, the vector will be used to store the receipt number
+    auto recVector = std::any_cast<std::vector<std::string>>(param);
+
     // Get the current date and time
     auto t = std::time(nullptr);
     auto tm = *std::localtime(&t);
