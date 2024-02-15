@@ -15,7 +15,6 @@
 #include <string>
 #include <ctime>
 
-
 class MenuFunction
 {
 public:
