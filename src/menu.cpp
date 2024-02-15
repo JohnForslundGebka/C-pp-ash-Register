@@ -26,7 +26,7 @@ void Menu::displayMenuItems() const
 }
 
 //main loop of the menu class
-void Menu::run()
+void Menu::run(std::vector<std::string>&transactionNumbers)
 {
     while (true)
     {
@@ -47,13 +47,13 @@ void Menu::run()
 
             if (std::holds_alternative<function>(selected.func)) {
 
-                std::any param = std::vector<std::string>();
+                std::any param = transactionNumbers;
                 clearScreen();
                 std::get<function>(selected.func)(param);
 
             } else if (std::holds_alternative<Menu *>(selected.func)) {
                 Menu *submenu = std::get<Menu *>(selected.func);
-                submenu->run();
+                submenu->run(transactionNumbers);
             }
         } else
         {

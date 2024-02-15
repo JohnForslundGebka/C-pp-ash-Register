@@ -31,7 +31,7 @@ public:
         items.push_back({name, submenu});
     }
 
-    void run();
+    void run(std::vector<std::string>&transactionNumbers);
 
     static void clearScreen();
 

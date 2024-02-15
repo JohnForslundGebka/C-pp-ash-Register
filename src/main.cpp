@@ -1,10 +1,17 @@
 #include "menu.h"
 #include "menuFunction.h"
+#include <vector>
+#include <iostream>
+#include <string>
 
 
 
 int main()
 {
+
+
+
+   std::vector<std::string> transactionNumbers;
 
     Menu mainMenu;
     Menu manageProducts;
@@ -17,11 +24,12 @@ int main()
 
    manageProducts.addMenuFunction("See Article Info",MenuFunction::printArticleInfo);
    sale.addMenuFunction("Make a sale",MenuFunction::sale);
+    transactions.addMenuFunction()
 
 
 
 
-   mainMenu.run();
+   mainMenu.run(transactionNumbers);
 
 
 
