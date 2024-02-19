@@ -1,16 +1,8 @@
 #include "menu.h"
 #include "menuFunction.h"
-#include <vector>
-#include <iostream>
-#include <string>
-
-
 
 int main()
 {
-
-
-
     Menu mainMenu;
     Menu manageProducts;
     Menu sale;
@@ -25,8 +17,5 @@ int main()
     transactions.addMenuFunction("Transaction History",MenuFunction::manageTransactions);
 
     mainMenu.run();
-
-
-
 
 }

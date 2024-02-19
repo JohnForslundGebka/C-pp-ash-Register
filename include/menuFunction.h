@@ -31,7 +31,7 @@ public:
 
     static void manageTransactions (std::any &param);
 
-    static void printTransaction(std::string transaction);
+    static bool printTransaction(std::string transaction);
 
 };
 

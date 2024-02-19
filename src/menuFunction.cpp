@@ -209,30 +209,49 @@ void MenuFunction::createReceipt(std::vector<std::pair<std::unique_ptr<Article>,
 void MenuFunction::manageTransactions(std::any &param)
 {
 
+
     int userChoice{};
     Menu::clearScreen();
 
-    std::cout << "\nTransactions\n"
-              << "====================================\n";
-    for (const auto& temp:MenuFunction::transactionNumbers)
-    {
-                 std::cout << temp  << "\n";
+
+
+        std::cout << "\nTransactions\n"
+                  << "====================================\n";
+        //prints all the transactions from the vector
+        for (const auto &temp: MenuFunction::transactionNumbers) {
+            std::cout << temp << "\n";
+        }
+
+        std::cout << "===================================="
+                  << "\nEnter a transaction number to see more info or 0 to Exit";
+        std::cout << "\nEnter number: ";
+        std::cin >> userChoice;
+        if (userChoice == 0)
+            return;
+    while (true) {
+        //function that reads info from file and prints to console. Returns true if file could be read
+        if (MenuFunction::printTransaction(std::to_string(userChoice)))
+            return;
+        else{
+            std::cout << "\nInvalid transaction number\n";
+            std::cout << "===================================="
+                      << "\nEnter a transaction number to see more info or 0 to Exit";
+            std::cout << "\nEnter number: ";
+            std::cin >> userChoice;
+            if (userChoice == 0)
+                return;
+            continue;
+
+
+        }
     }
 
-    std::cout << "===================================="
-              << "\nEnter a transaction number to see more info or 0 to Exit";
-    std::cout << "\nEnter number: ";
-    std::cin >> userChoice;
 
-    if (userChoice==0)
-        return;
-
-    MenuFunction::printTransaction(std::to_string(userChoice));
 
 }
 
 //Reads info from receipt file
-void MenuFunction::printTransaction(std::string transaction)
+bool MenuFunction::printTransaction(std::string transaction)
 {
     Menu::clearScreen();
     int userChoice{};
@@ -240,13 +259,13 @@ void MenuFunction::printTransaction(std::string transaction)
     //create a import stream
     std::ifstream intf{ "r" + transaction + ".txt" };
 
-    //checks if the txt could be opend
+    //checks if the txt could be opened
     if (!intf)
     {
-        // Print an error and exit
-        std::cerr << "Uh oh, .txt could not be opened for writing!\n";
-        return;
+       return false;
     }
+
+
 
     //loop that runs until no more text is found
     while (intf)
@@ -265,6 +284,6 @@ void MenuFunction::printTransaction(std::string transaction)
     std::cin >> userChoice;
 
     if (userChoice==0)
-        return;
+        return true;
 
 }
