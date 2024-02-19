@@ -3,6 +3,9 @@
 // Define the static member variable
 std::vector<std::string> MenuFunction::transactionNumbers;
 
+//Returns a unique pointer to an article type object, this could either be laptop, Clothing, or Book
+//Takes an int as an argument, which is then divided by 1000 to get the starting number (1, for book and so on)
+//
 std::unique_ptr<Article> MenuFunction::createArticle(int articleNumber)
 {
    int typeOfArticle = (articleNumber / 1000);  //used to get the starting number of the article
@@ -60,6 +63,9 @@ void MenuFunction::printArticleInfo(std::any &param)
     }
 }
 
+//Makes a "sale", asks the user to input an article number, and then creates an object from that article number
+//by using the createArticle function. After the sale has been made, the function makes a DatabaseQueries object
+//and updates the amount of the articles in the DB
 void MenuFunction::sale(std::any &param)
 {
 

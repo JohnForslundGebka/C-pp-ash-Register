@@ -16,19 +16,24 @@
 
 int main()
 {
+    // Creating menus and submenu objects. Class is located in menu.h
     Menu mainMenu;
     Menu manageProducts;
     Menu sale;
     Menu transactions;
 
+    //Adding pointers to menu objects
     mainMenu.addSubMenu("Manage Products", &manageProducts);
     mainMenu.addSubMenu("Make A Sale", &sale);
     mainMenu.addSubMenu("Transaction History",&transactions);
 
+    //Different functions that exists as menu options, make a sale for example
+    //can be found in menuFunction.h
     manageProducts.addMenuFunction("See Article Info",MenuFunction::printArticleInfo);
     sale.addMenuFunction("Make a sale",MenuFunction::sale);
     transactions.addMenuFunction("Transaction History",MenuFunction::manageTransactions);
 
+    //Call the run function in the menu object
     mainMenu.run();
 
 }

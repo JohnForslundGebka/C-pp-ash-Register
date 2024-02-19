@@ -1,6 +1,6 @@
 #include "menu.h"
 
-
+//function that clears the users console screen
 void Menu::clearScreen()
 {
 #if defined(_WIN32) || defined(_WIN64)
@@ -45,12 +45,13 @@ void Menu::run()
         if (choice >= 1 && choice <= items.size()) {
             MenuItem &selected = items[choice - 1];
 
+            //if the menuItem struct has a function, run that function
             if (std::holds_alternative<function>(selected.func)) {
 
                 std::any param;
                 clearScreen();
                 std::get<function>(selected.func)(param);
-
+                //if menuitem struct has a pointer to another menu object, call that objects run member function
             } else if (std::holds_alternative<Menu *>(selected.func)) {
                 Menu *submenu = std::get<Menu *>(selected.func);
                 submenu->run();
