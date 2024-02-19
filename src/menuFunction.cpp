@@ -127,7 +127,9 @@ void MenuFunction::sale(std::any &param)
 
         //create a pointer that points to an article subclass (laptop, books, or clothes)
         auto article = MenuFunction::createArticle(userInputArticleNum);
-        if (!article)   // Check if article is nullptr aka wrong article number was entered
+        // Check if article is nullptr, or if the article number is 0 in the created object.
+        //if that is the case, an incorrect article number was entered
+        if (!article || article->getArtNumber()==0)
         {
             std::cout << "Invalid article number. Please try again.\n";
             std::cin.clear();
@@ -209,11 +211,8 @@ void MenuFunction::createReceipt(std::vector<std::pair<std::unique_ptr<Article>,
 void MenuFunction::manageTransactions(std::any &param)
 {
 
-
     int userChoice{};
     Menu::clearScreen();
-
-
 
         std::cout << "\nTransactions\n"
                   << "====================================\n";
@@ -228,11 +227,15 @@ void MenuFunction::manageTransactions(std::any &param)
         std::cin >> userChoice;
         if (userChoice == 0)
             return;
-    while (true) {
+
+    while (true)
+    {
         //function that reads info from file and prints to console. Returns true if file could be read
         if (MenuFunction::printTransaction(std::to_string(userChoice)))
+            //if file could be read. exit function
             return;
-        else{
+        else
+        {
             std::cout << "\nInvalid transaction number\n";
             std::cout << "===================================="
                       << "\nEnter a transaction number to see more info or 0 to Exit";
@@ -241,13 +244,8 @@ void MenuFunction::manageTransactions(std::any &param)
             if (userChoice == 0)
                 return;
             continue;
-
-
         }
     }
-
-
-
 }
 
 //Reads info from receipt file
