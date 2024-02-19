@@ -18,10 +18,11 @@
 class MenuFunction
 {
 public:
+    static std::vector<std::string> transactionNumbers;
     static void printArticleInfo(std::any &param);
     static void sale(std::any &param);
     static std::unique_ptr<Article>createArticle(int articleNumber);
-    static void createReceipt( std::vector<std::pair<std::unique_ptr<Article>, int>>&articles, std::any &param);
+    static void createReceipt( std::vector<std::pair<std::unique_ptr<Article>, int>>&articles);
     static void manageTransactions (std::any &param);
 };
 

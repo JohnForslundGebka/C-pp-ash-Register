@@ -1,6 +1,7 @@
 #include "menuFunction.h"
 
-
+// Define the static member variable
+std::vector<std::string> MenuFunction::transactionNumbers;
 
 std::unique_ptr<Article> MenuFunction::createArticle(int articleNumber)
 {
@@ -120,7 +121,7 @@ void MenuFunction::sale(std::any &param)
                 q1.updateAmountInDb(article.first->getArtNumber(),article.first->getTable(),
                                     (article.first->getAmount() - article.second));
             }
-            MenuFunction::createReceipt(articles, param); //create and "print" a receipt
+            MenuFunction::createReceipt(articles); //create and "print" a receipt
             return; //exit function when done updating the amount of articles in DB
         }
 
@@ -143,11 +144,12 @@ void MenuFunction::sale(std::any &param)
 }
 
 //creates a .txt with the receipt for the sale. And saves the number in a vector of strings
-void MenuFunction::createReceipt(std::vector<std::pair<std::unique_ptr<Article>, int>> &articles, std::any &param)
+void MenuFunction::createReceipt(std::vector<std::pair<std::unique_ptr<Article>, int>> &articles)
 {
 
     //extract the vector from the std::any, the vector will be used to store the receipt number
-    auto recVector = std::any_cast<std::vector<std::string>>(param);
+  //  auto recVector = std::any_cast<std::vector<std::string>>(param);
+
 
     // Get the current date and time
     auto t = std::time(nullptr);
@@ -164,7 +166,7 @@ void MenuFunction::createReceipt(std::vector<std::pair<std::unique_ptr<Article>,
     //create a string that will be the number/name of the receipt
     std::string recName = "r" + std::to_string(recNumber) + ".txt";
     //Add the receipt number to the vector containing all the receipt numbers of this session
-    recVector.push_back(recName);
+    MenuFunction::transactionNumbers.push_back(recName);
 
     //check if file could be created
     std::ofstream outf{ recName };
@@ -213,11 +215,8 @@ void MenuFunction::manageTransactions(std::any &param)
     int userChoice{};
     Menu::clearScreen();
 
-    //extract the vector from the std::any
-    auto recVector = std::any_cast<std::vector<std::string>>(param);
-
     std::cout << "\nTransactions\n";
-    for (const auto& temp:recVector)
+    for (const auto& temp:MenuFunction::transactionNumbers)
     {
                  std::cout << temp  << "\n";
     }

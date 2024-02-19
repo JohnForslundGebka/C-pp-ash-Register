@@ -9,7 +9,7 @@
 int main()
 {
 
-    std::vector<std::string> transactionNumbers;
+
 
     Menu mainMenu;
     Menu manageProducts;
@@ -24,7 +24,7 @@ int main()
     sale.addMenuFunction("Make a sale",MenuFunction::sale);
     transactions.addMenuFunction("Trans List",MenuFunction::manageTransactions);
 
-    mainMenu.run(transactionNumbers);
+    mainMenu.run();
 
 
 
