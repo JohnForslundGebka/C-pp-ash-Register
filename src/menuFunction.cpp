@@ -147,10 +147,6 @@ void MenuFunction::sale(std::any &param)
 void MenuFunction::createReceipt(std::vector<std::pair<std::unique_ptr<Article>, int>> &articles)
 {
 
-    //extract the vector from the std::any, the vector will be used to store the receipt number
-  //  auto recVector = std::any_cast<std::vector<std::string>>(param);
-
-
     // Get the current date and time
     auto t = std::time(nullptr);
     auto tm = *std::localtime(&t);
@@ -182,12 +178,12 @@ void MenuFunction::createReceipt(std::vector<std::pair<std::unique_ptr<Article>,
               << "Fjallgatan,\n"
               << "Gothenburg, SWE, 06119\n"
               << "(203) 333-2478\n"
-              << "-------------------------------------------------\n"
+              << "----------------------------------------------------------------\n"
               << std::put_time(&tm, "%a %b %d %H:%M:%S %Y") << std::endl // Formats the date and time
               << "\nCASHIER: John\n"
               << "Receipt Number:" << std::to_string(recNumber) << "\n\n"
-              << "  Item              QTY  Unit Price    Total\n"
-              << "-------------------------------------------------\n";
+              << "Item                    QTY          Unit Price         Total\n"
+              << "----------------------------------------------------------------\n";
 
     double totalPrice{};
     // Print the items, quantities, unit prices, and totals
@@ -195,15 +191,15 @@ void MenuFunction::createReceipt(std::vector<std::pair<std::unique_ptr<Article>,
     {
         double totPriceOfArticles = (article.first->getRetailPrice() * article.second);
 
-        outf << std::left << std::setw(20) << article.first->getTitle()
-             << std::setw(7) << article.second
-             << std::setw(10) << std::fixed << std::setprecision(2) << article.first->getRetailPrice()  << "$"
-             << std::setw(12) << totPriceOfArticles  << "$" << std::endl;
+        outf << std::left << std::setw(25) << article.first->getTitle()
+             << std::setw(5) << article.second
+             << std::right << std::setw(8) << "$" << std::fixed << std::setprecision(2) << article.first->getRetailPrice()
+             << std::setw(14) << " $" << std::fixed << std::setprecision(2) << totPriceOfArticles << std::endl;
         totalPrice += totPriceOfArticles;
     }
 
     // Print the footer of the receipt
-    outf << "=================================================\n"
+    outf << "================================================================\n"
          << std::right << std::setw(30) << "Total:" << std::setw(15) << totalPrice  << "$" << std::endl;
 
 
