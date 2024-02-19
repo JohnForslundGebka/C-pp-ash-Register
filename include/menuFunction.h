@@ -22,7 +22,7 @@ public:
     static void sale(std::any &param);
     static std::unique_ptr<Article>createArticle(int articleNumber);
     static void createReceipt( std::vector<std::pair<std::unique_ptr<Article>, int>>&articles, std::any &param);
-
+    static void manageTransactions (std::any &param);
 };
 
 

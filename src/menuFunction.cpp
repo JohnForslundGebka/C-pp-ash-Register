@@ -206,3 +206,26 @@ void MenuFunction::createReceipt(std::vector<std::pair<std::unique_ptr<Article>,
 
 
 }
+
+void MenuFunction::manageTransactions(std::any &param)
+{
+
+    int userChoice{};
+    Menu::clearScreen();
+
+    //extract the vector from the std::any
+    auto recVector = std::any_cast<std::vector<std::string>>(param);
+
+    std::cout << "\nTransactions\n";
+    for (const auto& temp:recVector)
+    {
+                 std::cout << temp  << "\n";
+    }
+
+    std::cout << "===================================="
+              << "\nEnter a transaction number to see more info or 0 to Exit";
+    std::cout << "\nEnter number: ";
+    std::cin >> userChoice;
+
+
+}
