@@ -22,7 +22,7 @@ int main()
 
     manageProducts.addMenuFunction("See Article Info",MenuFunction::printArticleInfo);
     sale.addMenuFunction("Make a sale",MenuFunction::sale);
-    transactions.addMenuFunction("Trans List",MenuFunction::manageTransactions);
+    transactions.addMenuFunction("Transaction History",MenuFunction::manageTransactions);
 
     mainMenu.run();
 

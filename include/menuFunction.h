@@ -18,12 +18,21 @@
 class MenuFunction
 {
 public:
+    //A static vector that contains transaction numbers. Numbers are added when a sale is made
     static std::vector<std::string> transactionNumbers;
+
     static void printArticleInfo(std::any &param);
+
     static void sale(std::any &param);
+
     static std::unique_ptr<Article>createArticle(int articleNumber);
+
     static void createReceipt( std::vector<std::pair<std::unique_ptr<Article>, int>>&articles);
+
     static void manageTransactions (std::any &param);
+
+    static void printTransaction(std::string transaction);
+
 };
 
 

@@ -162,7 +162,7 @@ void MenuFunction::createReceipt(std::vector<std::pair<std::unique_ptr<Article>,
     //create a string that will be the number/name of the receipt
     std::string recName = "r" + std::to_string(recNumber) + ".txt";
     //Add the receipt number to the vector containing all the receipt numbers of this session
-    MenuFunction::transactionNumbers.push_back(recName);
+    MenuFunction::transactionNumbers.push_back(std::to_string(recNumber));
 
     //check if file could be created
     std::ofstream outf{ recName };
@@ -205,13 +205,15 @@ void MenuFunction::createReceipt(std::vector<std::pair<std::unique_ptr<Article>,
 
 }
 
+//Prints out all the transactions that have been made.
 void MenuFunction::manageTransactions(std::any &param)
 {
 
     int userChoice{};
     Menu::clearScreen();
 
-    std::cout << "\nTransactions\n";
+    std::cout << "\nTransactions\n"
+              << "====================================\n";
     for (const auto& temp:MenuFunction::transactionNumbers)
     {
                  std::cout << temp  << "\n";
@@ -222,5 +224,47 @@ void MenuFunction::manageTransactions(std::any &param)
     std::cout << "\nEnter number: ";
     std::cin >> userChoice;
 
+    if (userChoice==0)
+        return;
+
+    MenuFunction::printTransaction(std::to_string(userChoice));
+
+}
+
+//Reads info from receipt file
+void MenuFunction::printTransaction(std::string transaction)
+{
+    Menu::clearScreen();
+    int userChoice{};
+
+    //create a import stream
+    std::ifstream intf{ "r" + transaction + ".txt" };
+
+    //checks if the txt could be opend
+    if (!intf)
+    {
+        // Print an error and exit
+        std::cerr << "Uh oh, .txt could not be opened for writing!\n";
+        return;
+    }
+
+    //loop that runs until no more text is found
+    while (intf)
+    {
+        std::string currentLine{};
+
+        std::getline(intf,currentLine);
+
+        std::cout << currentLine << "\n";
+
+    }
+
+    std::cout << "\n================================================================"
+              << "\nPress 0 to Exit";
+    std::cout << "\nEnter number: ";
+    std::cin >> userChoice;
+
+    if (userChoice==0)
+        return;
 
 }
