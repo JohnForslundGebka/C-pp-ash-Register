@@ -1,3 +1,16 @@
+// ==============================================================================
+// Article.h
+// Defines the abstract base class Article.
+//
+// Represents a general article in inventory with common attributes such as title,
+// article number, purchase price, retail price, and stock amount. Serves as a
+// foundation for more specific article types (e.g., books, clothing, laptops) with
+// additional attributes and behaviors. Includes basic getters and setters, and
+// requires derived classes to implement getTable() and printInfo() methods.
+//
+// Author: John Forslund Gebka
+// Date: 2024-02-01
+// ==============================================================================
 #ifndef C_PP_ASH_REGISTER_ARTICLE_H
 #define C_PP_ASH_REGISTER_ARTICLE_H
 #include <string>

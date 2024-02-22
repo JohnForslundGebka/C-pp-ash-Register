@@ -1,3 +1,18 @@
+// ==============================================================================
+// books.h
+// Header file for the Books class
+//
+// The Books class represents book items in the inventory,
+//
+// Features:
+// - Inherits from Article to leverage common inventory item attributes.
+// Usage:
+// Utilized within the inventory management system for creating, updating,
+// and displaying information specific to Books  items.
+//
+// Author: John Forslund Gebka
+// Date: 2024-02-01
+// ==============================================================================
 #ifndef C_PP_ASH_REGISTER_BOOKS_H
 #define C_PP_ASH_REGISTER_BOOKS_H
 #include "databaseQueries.h"
