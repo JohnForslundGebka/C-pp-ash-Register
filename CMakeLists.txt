@@ -16,6 +16,13 @@ add_executable(C-pp-ash-Register src/main.cpp
 
 target_include_directories(C-pp-ash-Register PUBLIC "${PROJECT_BINARY_DIR}" "include")
 
+#prompts the user to add the git submodule
+if(NOT EXISTS "${CMAKE_SOURCE_DIR}/lib/SQLiteCpp/.git")
+    message(FATAL_ERROR "SQLiteCpp submodule does not exist. You must run 'git submodule update --init --recursive' to initialize it.")
+else()
+    message("-- SQLiteCpp submodule found.")
+endif()
+
 add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/lib/SQLiteCpp)
 
 target_link_libraries(C-pp-ash-Register
