@@ -30,3 +30,8 @@ target_link_libraries(C-pp-ash-Register
         sqlite3
 )
 
+# Post-build command to copy database to the same directory as the executable
+add_custom_command(TARGET C-pp-ash-Register POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy
+        ${CMAKE_SOURCE_DIR}/db/CashRegisterDB.db
+        $<TARGET_FILE_DIR:C-pp-ash-Register>/CashRegisterDB.db)
